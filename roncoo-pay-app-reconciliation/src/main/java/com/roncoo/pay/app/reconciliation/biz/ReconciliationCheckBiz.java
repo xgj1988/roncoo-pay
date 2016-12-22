@@ -15,15 +15,6 @@
  */
 package com.roncoo.pay.app.reconciliation.biz;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.roncoo.pay.reconciliation.entity.RpAccountCheckBatch;
 import com.roncoo.pay.reconciliation.entity.RpAccountCheckMistake;
 import com.roncoo.pay.reconciliation.entity.RpAccountCheckMistakeScratchPool;
@@ -34,6 +25,14 @@ import com.roncoo.pay.reconciliation.service.RpAccountCheckTransactionService;
 import com.roncoo.pay.reconciliation.vo.ReconciliationEntityVo;
 import com.roncoo.pay.trade.entity.RpTradePaymentRecord;
 import com.roncoo.pay.trade.enums.TradeStatusEnum;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 对账的核心业务biz.
@@ -117,7 +116,10 @@ public class ReconciliationCheckBiz {
 	 * @param batch
 	 *            对账批次
 	 */
-	private void baseOnPaltForm(List<RpTradePaymentRecord> platformDateList, List<ReconciliationEntityVo> bankList, List<RpAccountCheckMistake> misTakeList, List<RpAccountCheckMistakeScratchPool> screatchRecordList, RpAccountCheckBatch batch) {
+	private void baseOnPaltForm(List<RpTradePaymentRecord> platformDateList, List<ReconciliationEntityVo> bankList,
+								List<RpAccountCheckMistake> misTakeList,
+								List<RpAccountCheckMistakeScratchPool> screatchRecordList,
+								RpAccountCheckBatch batch) {
 		BigDecimal platTradeAmount = BigDecimal.ZERO;// 平台交易总金额
 		BigDecimal platFee = BigDecimal.ZERO;// 平台总手续费
 		Integer tradeCount = 0;// 平台订单总数
@@ -192,7 +194,10 @@ public class ReconciliationCheckBiz {
 	 * @param batch
 	 *            对账批次
 	 */
-	private void baseOnBank(List<RpTradePaymentRecord> platAllDateList, List<ReconciliationEntityVo> bankList, List<RpAccountCheckMistakeScratchPool> platScreatchRecordList, List<RpAccountCheckMistake> misTakeList, RpAccountCheckBatch batch, List<RpAccountCheckMistakeScratchPool> removeScreatchRecordList) {
+	private void baseOnBank(List<RpTradePaymentRecord> platAllDateList, List<ReconciliationEntityVo> bankList,
+							List<RpAccountCheckMistakeScratchPool> platScreatchRecordList,
+							List<RpAccountCheckMistake> misTakeList, RpAccountCheckBatch batch,
+							List<RpAccountCheckMistakeScratchPool> removeScreatchRecordList) {
 		BigDecimal platTradeAmount = BigDecimal.ZERO;// 平台交易总金额
 		BigDecimal platFee = BigDecimal.ZERO;// 平台总手续费
 		Integer tradeCount = 0;// 平台订单总数
